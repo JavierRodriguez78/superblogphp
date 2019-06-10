@@ -29,7 +29,7 @@ class LoginController extends Controller
             $this->error="El usuario o password es incorrecto";
             return  $this->viewManager->renderTemplate('\auth\login.view.html',['error'=>$this->error]);
         }
-        $this->sessionManager->put('user',$user->email);
+        $this->sessionManager->put('user',$user->id);
         $this->redirectTo('dashboard');
     }
 }
