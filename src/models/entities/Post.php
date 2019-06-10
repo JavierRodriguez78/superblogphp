@@ -33,7 +33,7 @@ class Post extends Entity{
     /**
      * @ORM\Column(type="integer")
      */
-    public $id_user;
+    public $idUser;
 
 
     /**

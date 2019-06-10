@@ -21,10 +21,11 @@ class PostSeeder extends AbstractSeed
             $data[]=[
                 'title'=> $faker->word,
                 'body'=> $faker->text(250),
-                'id_user'=> 1,
+                'idUser'=> 1,
                 'created_at'=>date('Y-m-d H:i:s')
             ];
         } 
         $this->insert('posts',$data);
     }
+    
 }
