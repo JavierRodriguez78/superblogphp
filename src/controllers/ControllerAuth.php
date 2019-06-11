@@ -23,7 +23,7 @@ abstract class ControllerAuth
         $this->logger = $this->container->get(LogManager::class);
         $this->logger->info("Clase ".get_class($this)." cargada");
         $this->sessionManager = $this->container->get(SessionManager::class);
-        $this->auth();
+        if ($this->sessionManager->get('user'))  $this->auth();
     }
 
     public abstract function index();
@@ -38,9 +38,8 @@ abstract class ControllerAuth
     public function auth()
     {
      $usersService = $this->container->get(UsersService::class);
-     $id= $this->sessionManager->get('user');
-     if(!$id) return $this->redirectTo('login');
-     $this->user = $usersService->getUserById($id);
+     $this->user= $this->sessionManager->get('user');
+    
      if(!$this->user) return $this->redirectTo('login');
     }
 }

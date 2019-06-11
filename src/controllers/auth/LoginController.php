@@ -1,11 +1,11 @@
 <?php
 namespace App\controllers\auth;
-use App\controllers\Controller;
+use App\controllers\ControllerAuth;
 use App\DoctrineManager;
 use App\models\entities\User;
 
 
-class LoginController extends Controller
+class LoginController extends ControllerAuth
 {
 
     private $error;
@@ -13,6 +13,7 @@ class LoginController extends Controller
     public function index(){
 
         $this->error = null;
+        if($this->user) return $this->redirectTo('dashboard');
         $this->viewManager->renderTemplate('\auth\login.view.html');
     }
     
@@ -29,7 +30,7 @@ class LoginController extends Controller
             $this->error="El usuario o password es incorrecto";
             return  $this->viewManager->renderTemplate('\auth\login.view.html',['error'=>$this->error]);
         }
-        $this->sessionManager->put('user',$user->id);
+        $this->sessionManager->put('user',$user);
         $this->redirectTo('dashboard');
     }
 }

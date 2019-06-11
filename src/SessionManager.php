@@ -1,5 +1,6 @@
 <?php
 namespace App;
+use Kint;
 
 class SessionManager
 {
@@ -10,8 +11,11 @@ class SessionManager
 
     public function get(string $variable)
     {
-        return unserialize($_SESSION[$variable]);
-    }
+            
+            if (! isset($_SESSION[$variable])) return null; 
+            return unserialize($_SESSION[$variable]);
+
+        }
     public function remove(string $variable)
     {
         unset($_SESSION[$variable]);

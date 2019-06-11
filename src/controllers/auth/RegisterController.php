@@ -2,9 +2,9 @@
 namespace App\controllers\auth;
 use  App\DoctrineManager;
 use App\models\entities\User;
-use App\controllers\Controller;
+use App\controllers\ControllerAuth;
 
-class RegisterController extends Controller
+class RegisterController extends ControllerAuth
 {
 
     public function index()
