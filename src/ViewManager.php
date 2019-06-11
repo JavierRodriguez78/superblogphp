@@ -12,6 +12,7 @@ class ViewManager
     {
         $loader= new \Twig\Loader\FilesystemLoader(dirname(__DIR__).'/templates');
         $this->twig = new \Twig\Environment($loader,[
+            'debug' => true,
             'cache' => dirname(__DIR__).'/cache/views'
         ]);
     }
