@@ -12,12 +12,7 @@ function deleteMsg(blog, id){
     $('.modal-footer .btn-danger').attr("id",id);
 }
 
-function confirmDelete(){
-    alert("pulsado");
-   
-        var id = $(this).attr("id");
-        console.log(id);
-        $(this).onclick="location.href='/delete-post/"+id+"'";
-
-    }
-
+$('.modal-footer .btn-danger ').on("click",(ev)=>{
+    let id= ($(ev.target).attr("id"));
+    window.location.href="/delete-post/"+id;
+});
