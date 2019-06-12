@@ -22,9 +22,10 @@
         }
     },
     "scripts":
-    {
-        "start": "php -S localhost:5000 -t=public",
-        "kill": "lsof -n -i4TCP:5000 | grep LISTEN | awk '{ print $2 }' | xargs kill"
+    {        
+        "start": "@composer delete-cache && php -S localhost:5000 -t=public",
+        "kill": "lsof -n -i4TCP:5000 | grep LISTEN | awk '{ print $2 }' | xargs kill",
+        "delete-cache":"if [ -d 'cache/views' ]; then rm -r cache/views; fi" 
     },
     "config":
     {

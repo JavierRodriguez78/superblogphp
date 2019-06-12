@@ -15,6 +15,7 @@ class ViewManager
             'debug' => true,
             'cache' => dirname(__DIR__).'/cache/views'
         ]);
+        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
     }
     
     public function render($view, $args=[])

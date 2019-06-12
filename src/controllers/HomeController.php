@@ -10,6 +10,6 @@ class HomeController extends ControllerAuth
         $PostsService = $this->container->get(PostsService::class);
         $posts= $PostsService->getPosts();
 
-        $this->viewManager->renderTemplate("index.view.html",['posts'=>$posts, 'user'=>$this->user->email]);
+        $this->viewManager->renderTemplate("index.view.html",['posts'=>$posts, 'user'=> (! $this->user)?null: $this->user->email]);
     }
 }

@@ -3,10 +3,7 @@ namespace App\controllers;
 use App\ViewManager;
 use App\LogManager;
 use App\SessionManager;
-use App\services\UsersService;
 use DI\Container;
-use App\DoctrineManager;
-use Kint;
 abstract class ControllerAuth
 {
 
@@ -37,9 +34,7 @@ abstract class ControllerAuth
 
     public function auth()
     {
-     $usersService = $this->container->get(UsersService::class);
      $this->user= $this->sessionManager->get('user');
-    
      if(!$this->user) return $this->redirectTo('login');
     }
 }
