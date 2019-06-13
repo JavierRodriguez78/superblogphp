@@ -25,6 +25,7 @@ class RegisterController extends ControllerAuth
         $user->password = sha1($password);
         $doctrine->em->persist($user);
         $doctrine->em->flush();
+        $this->redirectTo('login');
         
     }
 }

@@ -35,6 +35,7 @@ class PostController extends ControllerAuth
         } catch(\Exception $e) 
         {
             $this->logger->error($e->getMessage());
+            $this->redirectTo('dashboard');
         }
         
     }
@@ -43,7 +44,7 @@ class PostController extends ControllerAuth
         $postService =$this->container->get(PostsService::class);
         try{
          $post = $postService-> getPostUserById($this->user->id, $id);
-        $this->viewManager->renderTemplate('edit-post.view.html',['post'=>$post]);
+        $this->viewManager->renderTemplate('edit-post.view.html',['post'=>$post,'user'=>$this->user->email]);
         } catch( \Exception $e)
         {
             $this->logger->error($e->getMessage());

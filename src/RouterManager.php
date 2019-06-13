@@ -18,8 +18,9 @@ class RouterManager
             switch($route[0]){
                 case \FastRoute\Dispatcher::NOT_FOUND:
                    header("HTTP/1.0 404 Not Found");
-                   echo "<h1>NOT FOUND </h1>";
-                break;
+                  $this->container->call(["App\controllers\NotFoundController", "index"], [0]);
+                
+                                   break;
                 case \FastRoute\Dispatcher::FOUND:
                    $controller = $route[1];
                    $method = $route[2];

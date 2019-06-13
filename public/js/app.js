@@ -13,6 +13,6 @@ function deleteMsg(blog, id){
 }
 
 $('.modal-footer .btn-danger ').on("click",(ev)=>{
-    let id= ($(ev.target).attr("id"));
+    let id= $(ev.target).attr("id");
     window.location.href="/delete-post/"+id;
 });
